@@ -6,4 +6,5 @@
 # TBA
 
 Here is a link to [Google](https://google.com).
+And here's another link to good old [Yahoo!](https://yahoo.com).
 
