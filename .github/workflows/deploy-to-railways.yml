@@ -23,6 +23,10 @@ jobs:
           working-directory: React-app
           run: npm install
 
+        - name: Run Vitest
+          working-directory: React-app
+          run: npm test
+
         - name: Build frontend
           working-directory: React-app
           run: npm run build
