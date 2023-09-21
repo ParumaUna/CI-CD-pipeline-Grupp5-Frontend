@@ -5,11 +5,6 @@
   text-align: center;
 }
 
-.header {
-  background-color: lightblue;
-  padding: 20px 0px 20px 0px
-}
-
 .all-activities-section {
   margin-top: 20px;
 }
@@ -41,8 +36,8 @@
 
 #aside-section{
   float: left;
-  width: 300px;
-  height: 500px;
+  width: 350px;
+  height: 800px;
   background: lightgray;
   margin: 20px 20px 20px 0px;
   position: relative;

@@ -5,8 +5,8 @@ import Activity from './models/activity';
 
 import OneActivity from './components/OneActivity';
 //import CurrentWeekActivities from './components/CurrentWeekActivitiesTable';
-import CustomButton from './components/button';
-
+import CustomButton from './components/CustomButton';
+import Header from './components/Header';
 function App() {
 
   const [activities, setActivities] = useState<Activity[]>([])
@@ -61,11 +61,9 @@ function App() {
   //-------------------------------------------------------------------
   return (
     <>
-      <div className='header'>
-        <h1>Landing page</h1>
-        <h2>hello world</h2>
-      </div>
-
+      <Header h1={"Landing page"}
+              h2={"hello world"}></Header>
+      
       <aside id="aside-section">
         <p>Here is aside section</p>
         <p>To create or update activities</p>
