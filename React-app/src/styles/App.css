@@ -5,17 +5,48 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.header {
+  background-color: lightblue;
+  padding: 20px 0px 20px 0px
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.all-activities-section {
+  margin-top: 20px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.btnGetActivities{
+  background-color: rgb(245, 177, 51);
+  color: black;
+  font-size: 18px;
+  height: 40px;
+  border-radius: 10px;
+  width: 300px;
+  margin-bottom: 50px;
+  border-width: 0;
+
+  border-color: rgb(245, 177, 51);
+}
+
+.activities-table {
+  border-collapse: collapse;
+}
+
+.header-row th{    
+  width: 20%;
+  height: 40px;
+  border: 1px solid black;
+  border-collapse: collapse; 
+  background-color: gray;
+}
+
+#aside-section{
+  float: left;
+  width: 300px;
+  height: 500px;
+  background: lightgray;
+  margin: 20px 20px 20px 0px;
+  position: relative;
+  z-index:2;
 }
 
 @keyframes logo-spin {
@@ -33,10 +64,3 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}

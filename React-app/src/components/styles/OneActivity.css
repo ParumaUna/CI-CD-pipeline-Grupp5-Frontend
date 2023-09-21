@@ -1,0 +1,11 @@
+.tableRow td{
+    width: 20%;
+    height: 40px;
+    border: 1px solid black;
+    border-collapse: collapse; 
+ 
+} 
+
+.tableRow td li{
+    text-decoration: none;
+}
