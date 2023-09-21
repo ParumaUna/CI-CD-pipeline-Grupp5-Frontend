@@ -5,7 +5,7 @@ import Activity from './models/activity';
 
 import OneActivity from './components/OneActivity';
 //import CurrentWeekActivities from './components/CurrentWeekActivitiesTable';
-import CustomButton from './components/Button';
+import CustomButton from './components/button';
 
 function App() {
 
@@ -38,9 +38,9 @@ function App() {
     }
     else {
       setActivities([]);
-      setShowMessage("Here should be activities");
+      setShowMessage("Here should be all activities");
       setShowActivitiesStatus(!showActivitiesStatus);
-      setButtonText("Click here to hide all activities");
+      setButtonText("Click here to get all activities");
     }
 
   }    //-----------------------------------------------------------------------
