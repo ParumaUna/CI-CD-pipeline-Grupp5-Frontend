@@ -10,16 +10,16 @@ import Header from './components/Header';
 function App() {
 
   const [activities, setActivities] = useState<Activity[]>([])
-  const [showMessage, setShowMessage] = useState<String>("Here should be all activities")
-  const [showActivitiesStatus, setShowActivitiesStatus] = useState<Boolean>(false)
+  const [showMessage, setShowMessage] = useState<string>("Here should be all activities")
+  const [showActivitiesStatus, setShowActivitiesStatus] = useState<boolean>(false)
   const [buttonText, setButtonText] = useState<string>("Click here to get all activities")
 
 
   const getAllActivities = async () => {
 
     console.log("Inside getAllActivities");
-    //const baseURL :string  = "https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans";
-    const baseURL: string = "http://localhost:3000/api/plans";
+    const baseURL :string  = "https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans";
+   // const baseURL: string = "http://localhost:3000/api/plans";
 
     if (!showActivitiesStatus) {
       try {
