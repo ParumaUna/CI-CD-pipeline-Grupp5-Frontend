@@ -1,10 +1,10 @@
 import "./styles/Header.css"
-interface IHeader {
 
+
+interface IHeader {
     h1 : string
     h2: string
 }
-
 
 const Header = (props: IHeader) => {
     //-----------------------------------------------------------------------
