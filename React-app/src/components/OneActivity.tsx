@@ -17,10 +17,10 @@ const OneActivity = (props: IOneActivity) => {
     return(
         <>
         <tr className="tableRow">
-            <td>{props.nameOfActivity}</td> 
-            <td>{props.week}</td> 
-            <td>{props.day}</td> 
-            <td>{props.comment}</td>                      
+            <td className="nameOfActivity">{props.nameOfActivity}</td> 
+            <td className="week">{props.week}</td> 
+            <td className="day">{props.day}</td> 
+            <td className="comment">{props.comment}</td>                      
         </tr>
     </>
     )

@@ -28,11 +28,18 @@
 }
 
 .header-row th{    
-  width: 20%;
   height: 40px;
   border: 1px solid black;
   border-collapse: collapse; 
   background-color: gray;
+}
+
+.activity {
+  width: 20%;
+}
+
+.week{
+  width: 15%;
 }
 
 #aside-section{
