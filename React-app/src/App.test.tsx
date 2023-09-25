@@ -7,7 +7,7 @@ it("Should have message Landning page", () => {
  const message =  screen.queryByText("Landing page");
  expect(message).toBeVisible();
 
- const helloWorld =  screen.queryByText("hello world");
+ const helloWorld =  screen.queryByText("by world");
  expect(helloWorld).toBeVisible();
 
 })
