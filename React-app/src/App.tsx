@@ -3,10 +3,12 @@ import { useState } from 'react'
 import './styles/App.css'
 import Activity from './models/activity';
 
+
 import OneActivity from './components/OneActivity';
 //import CurrentWeekActivities from './components/CurrentWeekActivitiesTable';
 import CustomButton from './components/CustomButton';
 import Header from './components/Header';
+import { Button } from 'react-template-npm-coolbeans';
 function App() {
 
   const [activities, setActivities] = useState<Activity[]>([])
@@ -89,6 +91,7 @@ function App() {
 
         {showActivitiesStatus == false ? <p>{showMessage}</p> : null}
       </div>
+      <Button label="Custom Button"></Button>
     </>
 
   )

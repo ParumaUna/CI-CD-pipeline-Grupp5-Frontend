@@ -18,8 +18,9 @@
   width: 300px;
   margin-bottom: 50px;
   border-width: 0;
-
+  padding: 10px;
   border-color: rgb(245, 177, 51);
+  font-weight: normal;
 }
 
 .activities-table {
