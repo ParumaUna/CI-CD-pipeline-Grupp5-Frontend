@@ -64,7 +64,7 @@ function App() {
       });
 
       //Remove duplicates
-      let weeksWithoutDuplicates: number[] = weeks.filter((week, index) => weeks.indexOf(week) === index);
+      //let weeksWithoutDuplicates: number[] = weeks.filter((week, index) => weeks.indexOf(week) === index);
 
       // Split activities into weeks
       const fun = (array: Activity[]) => {
