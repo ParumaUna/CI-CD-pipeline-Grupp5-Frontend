@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd React-app && npm test # Byt folder, kör npm test
+cd React-app && npm test && npm run lint # Byt folder, kör npm test, och lint
