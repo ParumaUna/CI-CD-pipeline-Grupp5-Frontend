@@ -107,7 +107,7 @@ function App() {
   //-------------------------------------------------------------------
   return (
     <>
-      <Header h1={"Landning page"}
+      <Header h1={"Landing page"}
         h2={"hello world"}></Header>
 
       <aside id="aside-section">
