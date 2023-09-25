@@ -20,6 +20,9 @@ function App() {
   const baseURL: string = "https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans";
   //const baseURL: string = "http://localhost:3000/api/plans";
 
+  //******************************************************** 
+  // UseEffect
+  //********************************************************
   useEffect(() => {
     getActivities();
   }, [])
