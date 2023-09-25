@@ -3,17 +3,16 @@ import { useEffect, useState } from 'react'
 import './styles/App.css'
 import Activity from './models/activity';
 
-
 import OneActivity from './components/OneActivity';
 //import CurrentWeekActivities from './components/CurrentWeekActivitiesTable';
-import CustomButton from './components/CustomButton';
 import Header from './components/Header';
 import { Button } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
+
+
 function App() {
 
   const [activities, setActivities] = useState<Activity[]>([])
-  const [showMessage, setShowMessage] = useState<string>("Here should be all activities")
   const [showActivitiesStatus, setShowActivitiesStatus] = useState<boolean>(false)
   const [buttonText, setButtonText] = useState<string>("Click here to get all activities")
   const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
@@ -54,10 +53,8 @@ function App() {
     getActivities();
 
     if (!showActivitiesStatus) {
-      setShowMessage("");
       setShowActivitiesStatus(!showActivitiesStatus);
       setButtonText("Click here to hide all activities");
-
 
       const weeks: number[] = [];
 
@@ -84,7 +81,6 @@ function App() {
     }
     else {
       setActivities([]);
-      setShowMessage("Here should be all activities");
       setShowActivitiesStatus(!showActivitiesStatus);
       setButtonText("Click here to get all activities");
     }
@@ -107,8 +103,6 @@ function App() {
     </>
 
   ))
-
-
 
   //-------------------------------------------------------------------
   return (
