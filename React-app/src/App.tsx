@@ -5,8 +5,8 @@ import Activity from './models/activity';
 
 import OneActivity from './components/OneActivity';
 import CurrentWeekActivities from './components/CurrentWeekActivities';
-import Header from './components/Header';
-import { Button } from 'react-template-npm-coolbeans';
+
+import { Button, Header } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
 
 
@@ -82,7 +82,7 @@ function App() {
 
     }
     else {
-      setActivities([]);
+      //setActivities([]);
       setAllShowActivitiesStatus(!showAllActivitiesStatus);
       setButtonText("All activities");
     }
@@ -111,8 +111,7 @@ function App() {
   //-------------------------------------------------------------------
   return (
     <>
-      <Header h1={"Landing page"}
-        h2={"hello world"}></Header>
+      <Header h1={"Fun Days of the Week Activities"} h2={"Weekly Activities Planner"}></Header>
 
       <aside id="aside-section">
         <p>Here is aside section</p>
