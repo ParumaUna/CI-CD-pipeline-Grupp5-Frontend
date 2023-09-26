@@ -14,7 +14,7 @@ function App() {
 
   const [activities, setActivities] = useState<Activity[]>([])
   const [showAllActivitiesStatus, setAllShowActivitiesStatus] = useState<boolean>(false)
-  const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
+  //const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
   const [buttonText, setButtonText] = useState<string>("All activities")
   const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
 
@@ -120,7 +120,7 @@ function App() {
       </aside>
 
       <div >
-        <CurrentWeekActivities activities={activities} status={showWeekActivitiesStatus} week={35}></CurrentWeekActivities>
+        <CurrentWeekActivities activities={activities} status={true} week={35}></CurrentWeekActivities>
       </div>
 
       <div className="all-activities-section">
