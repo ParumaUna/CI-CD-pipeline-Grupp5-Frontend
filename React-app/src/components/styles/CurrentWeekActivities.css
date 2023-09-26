@@ -1,0 +1,30 @@
+table {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: #DBE8D8 ;
+  }
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    font-size: 20px;
+}
+
+  .header-row-current-activity th {
+    /* #DBE8D8 */
+    /* background-color: rgba(200, 247, 200, 1); */
+    background-color: rgba(193, 217, 193, 0.61);
+}
+
+.activity{
+  font-style: italic;
+  font-size: 18px;
+}
+
+.done-message{
+  color: orange;
+  font-size: 20px;
+  font-weight: bold;
+
+}

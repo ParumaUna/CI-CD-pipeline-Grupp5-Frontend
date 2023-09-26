@@ -4,7 +4,7 @@ import './styles/App.css'
 import Activity from './models/activity';
 
 import OneActivity from './components/OneActivity';
-//import CurrentWeekActivities from './components/CurrentWeekActivitiesTable';
+import CurrentWeekActivities from './components/CurrentWeekActivities';
 import Header from './components/Header';
 import { Button } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
@@ -13,8 +13,9 @@ import Separator from './components/Separator';
 function App() {
 
   const [activities, setActivities] = useState<Activity[]>([])
-  const [showActivitiesStatus, setShowActivitiesStatus] = useState<boolean>(false)
-  const [buttonText, setButtonText] = useState<string>("Click here to get all activities")
+  const [showAllActivitiesStatus, setAllShowActivitiesStatus] = useState<boolean>(false)
+  const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
+  const [buttonText, setButtonText] = useState<string>("All activities")
   const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
 
   const baseURL: string = "https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans";
@@ -22,6 +23,7 @@ function App() {
 
   useEffect(() => {
     getActivities();
+
   }, [])
 
   //******************************************************** 
@@ -44,7 +46,7 @@ function App() {
   }
 
   //******************************************************** 
-  // Function getActivities
+  // Function showAllActivities
   //********************************************************
   const showAllActivities = async () => {
 
@@ -52,9 +54,9 @@ function App() {
 
     getActivities();
 
-    if (!showActivitiesStatus) {
-      setShowActivitiesStatus(!showActivitiesStatus);
-      setButtonText("Click here to hide all activities");
+    if (!showAllActivitiesStatus) {
+      setAllShowActivitiesStatus(!showAllActivitiesStatus);
+      setButtonText("Hide all activities");
 
       const weeks: number[] = [];
 
@@ -81,11 +83,13 @@ function App() {
     }
     else {
       setActivities([]);
-      setShowActivitiesStatus(!showActivitiesStatus);
-      setButtonText("Click here to get all activities");
+      setAllShowActivitiesStatus(!showAllActivitiesStatus);
+      setButtonText("All activities");
     }
-
-  }    //-----------------------------------------------------------------------
+  } 
+  
+  
+  //-----------------------------------------------------------------------
   const existingActivities = splitedActivities.map((array) => (
     <>
       {array.map((activity) => (
@@ -115,6 +119,10 @@ function App() {
         <p>To create or update activities</p>
       </aside>
 
+      <div >
+        <CurrentWeekActivities activities={activities} status={showWeekActivitiesStatus} week={35}></CurrentWeekActivities>
+      </div>
+
       <div className="all-activities-section">
 
         <button id="btn-get-activities"
@@ -124,16 +132,19 @@ function App() {
         </button>
 
         <div>
-          {showActivitiesStatus == true ?
-            <table className='activities-table'>
-              <tr className="header-row">
-                <th className='activity'>Activity</th>
-                <th className='week'>Week</th>
-                <th>Days</th>
-                <th>Comment</th>
-              </tr>
-              {existingActivities}
-            </table> : null}
+          {showAllActivitiesStatus == true ?
+            <>
+              <h2>All activities</h2>
+              <table className='all-activities-table'>
+                <tr className="all-activities-table-header-row">
+                  <th className='activity'>Activity</th>
+                  <th className='week'>Week</th>
+                  <th>Days</th>
+                  <th>Comment</th>
+                </tr>
+                {existingActivities}
+              </table> </>
+            : null}
         </div>
 
       </div>
