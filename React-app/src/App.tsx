@@ -68,8 +68,8 @@ function App() {
 
       // Split activities into weeks
       const fun = (array: Activity[]) => {
-        let temp = []
-        for (let activity of array) {
+        const temp = []
+        for (const activity of array) {
           !temp[activity.week] ? temp[activity.week] = [activity] : temp[activity.week].push(activity)
         }
         return temp
@@ -86,7 +86,7 @@ function App() {
     }
 
   }    //-----------------------------------------------------------------------
-  let existingActivities = splitedActivities.map((array) => (
+  const existingActivities = splitedActivities.map((array) => (
     <>
       {array.map((activity) => (
         <OneActivity
