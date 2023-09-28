@@ -3,10 +3,12 @@
     height: 50px;
     border: 1px solid black;
     border-collapse: collapse; 
-    background-color: rgba(248, 248, 199, 0.67)
+    background-color: rgba(248, 248, 199, 0.67);
+    text-align: center;
 } 
 
 
 .tableRow td li{
     text-decoration: none;
+
 }

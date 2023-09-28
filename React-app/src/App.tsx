@@ -88,7 +88,6 @@ function App() {
     }
   } 
   
-  
   //-----------------------------------------------------------------------
   const existingActivities = splitedActivities.map((array) => (
     <>

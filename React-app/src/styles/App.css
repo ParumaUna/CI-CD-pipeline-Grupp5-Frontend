@@ -23,16 +23,26 @@
   font-weight: normal;
 }
 
+table {
+  width: 70%;
+  border-collapse: collapse;
+  background-color: #DBE8D8 ;
+  
+}
+
 .activities-table {
   border-collapse: collapse;
+  border: 1px solid black;
 }
 
 .all-activities-table-header-row th{    
   height: 20px;
+  padding: 8px;
   border: 1px solid black;
   border-collapse: collapse; 
   background-color: rgba(193, 217, 193, 0.61);
 }
+
 
 .activity {
   width: 20%;
