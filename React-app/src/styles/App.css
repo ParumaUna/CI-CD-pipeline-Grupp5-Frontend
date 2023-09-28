@@ -9,7 +9,7 @@
   margin-top: 20px;
 }
 
-.btnGetActivities{
+.btnGetActivities, .submit-button {
   background-color: rgb(245, 177, 51);
   color: black;
   font-size: 18px;
@@ -21,6 +21,8 @@
   padding: 10px;
   border-color: rgb(245, 177, 51);
   font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
 }
 
 table {
@@ -43,7 +45,6 @@ table {
   background-color: rgba(193, 217, 193, 0.61);
 }
 
-
 .activity {
   width: 20%;
 }
@@ -56,10 +57,79 @@ table {
   float: left;
   width: 350px;
   height: 800px;
-  background: lightgray;
+  background: rgba(201, 201, 201, 0.562);
   margin: 20px 20px 20px 0px;
   position: relative;
   z-index:2;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#aside-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.activity-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  margin: 0 auto;
+  padding: 4px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group input[type="number"]{
+  width: 20%;
+}
+
+.days-fieldset {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.days-fieldset label {
+  margin-bottom: 8px;
+}
+
+.submit-button {
+  margin: 0 auto;
+  background-color: rgb(121, 161, 10);
+}
+
+.submit-button:hover, .btnGetActivities:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+  background-color: rgb(148, 197, 13);
+}
+
+.btnGetActivities:hover {
+  background-color: rgb(253, 203, 110);
+}
+
+.submit-button:active, .btnGetActivities:active {
+  transform: translateY(2px);
 }
 
 @keyframes logo-spin {
