@@ -10,6 +10,7 @@ import { Button, Header } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
 import CreateActivityForm from './components/CreateActivityForm';
 
+import Footer from "./components/Footer.tsx"
 
 function App() {
 
@@ -169,6 +170,8 @@ function App() {
 
       </div>
       <Button label="Custom Button"></Button>
+      <Footer div={''}></Footer>
+      
     </>
 
   )

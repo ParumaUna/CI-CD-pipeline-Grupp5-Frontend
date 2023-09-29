@@ -1,7 +1,7 @@
 #aside-section{
     float: left;
     width: 350px;
-    height: 800px;
+    min-height: 600px;
     background: rgba(201, 201, 201, 0.562);
     margin: 20px 20px 20px 0px;
     position: relative;
