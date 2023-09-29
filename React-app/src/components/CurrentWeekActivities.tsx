@@ -11,6 +11,8 @@ interface ICurrentWeekActivities {
 
 const CurrentWeekActivities = (props : ICurrentWeekActivities) => {
 
+  const week = props.week;
+
   const  mondayActivities = props.activities.filter(activity => (activity.day.includes("Monday") && activity.week == props.week)).map((activity) => (
       <p className="activity">{activity.nameOfActivity}</p>
   ));
@@ -36,7 +38,7 @@ const CurrentWeekActivities = (props : ICurrentWeekActivities) => {
   //-----------------------------------------------------------------------
   return (
     <>
-      <p>Current week: 35</p>
+      <p>Current week: {props.week === 0 ? "--" : week}</p>
       {!props.status ? <p className="done-message">You have marked this week as done</p> : null}
       <div>
         <h2>Current week activities</h2>

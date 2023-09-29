@@ -49,6 +49,11 @@ table {
   width: 20%;
 }
 
+.btn-section {
+  display: flex;
+  justify-content: space-around;
+}
+
 .week{
   width: 15%;
 }

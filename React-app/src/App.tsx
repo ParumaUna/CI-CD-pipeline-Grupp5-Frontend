@@ -92,7 +92,7 @@ function App() {
   //******************************************************** 
   // Add a new activity through a form with check boxes
   //********************************************************
-  const handleActivitySubmit = async (formData: any) => {
+  const handleActivitySubmit = async (formData: object) => {
     try {
       const response = await fetch(baseURL, {
         method: 'POST',

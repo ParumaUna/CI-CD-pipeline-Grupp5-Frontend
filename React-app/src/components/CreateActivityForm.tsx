@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles/CreateActivityForm.css'
 
 interface ICreateActivityFormProps {
-  onActivitySubmit: (formData: any) => void;
+  onActivitySubmit: (formData: object) => void;
 }
 
 const CreateActivityForm: React.FC<ICreateActivityFormProps> = ({ onActivitySubmit }) => {
