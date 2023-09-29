@@ -8,6 +8,7 @@ import CurrentWeekActivities from './components/CurrentWeekActivities';
 
 import { Button, Header } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
+import CreateActivityForm from './components/CreateActivityForm';
 
 
 function App() {
@@ -91,74 +92,24 @@ function App() {
   //******************************************************** 
   // Add a new activity through a form with check boxes
   //********************************************************
-  const [formData, setFormData] = useState({
-    nameOfActivity: "",
-    week: 0,
-    startTime: null,
-    stopTime: null,
-    day: [] as string[],
-    comment: "",
-  });
-
-  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
-  const handleInputChange = (e: { target: any }) => {
-    const { name, value, type, checked } = e.target;
-
-    if (type === "checkbox") {
-      // Handle checkbox input separately
-      let updatedDays = formData.day.slice(); // Create a copy of the selected days array
-
-      if (checked) {
-        updatedDays.push(name); // Add the day to the array if checked
-      } else {
-        updatedDays = updatedDays.filter((day) => day !== name); // Remove the day if unchecked
-      }
-
-      setFormData({
-        ...formData,
-        day: updatedDays,
-      });
-    } else {
-      // Handle other inputs
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
-  };
-
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-
+  const handleActivitySubmit = async (formData: any) => {
     try {
       const response = await fetch(baseURL, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        // If POST is successful, refresh the activity states
-        // console.log("Activity created successfully");
         getActivities();
         setAllShowActivitiesStatus(!showAllActivitiesStatus);
-        // Clear the submit form
-        setFormData({
-          nameOfActivity: "",
-          week: 0,
-          startTime: null,
-          stopTime: null,
-          day: [],
-          comment: "",
-        });
       } else {
-        console.error("Failed to create activity");
+        console.error('Failed to create activity');
       }
     } catch (error) {
-      console.error("Error creating activity:", error);
+      console.error('Error creating activity:', error);
     }
   };
 
@@ -186,64 +137,7 @@ function App() {
     <>
       <Header h1={"Fun Days of the Week Activities"} h2={"Weekly Activities Planner"}></Header>
 
-      <aside id="aside-section">
-        <h2>Create New Activity</h2>
-        <form onSubmit={handleSubmit} className="activity-form">
-          <div className="form-group">
-            <label>
-              Activity:
-              <input
-                type="text"
-                name="nameOfActivity"
-                value={formData.nameOfActivity}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Week:
-              <br/>
-              <input
-                type="number"
-                name="week"
-                value={formData.week}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Comment:
-              <input
-                type="text"
-                name="comment"
-                value={formData.comment}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <fieldset className="days-fieldset">
-              <legend>Select Days:</legend>
-              {daysOfWeek.map((day) => (
-                <label key={day}>
-                  <input
-                    type="checkbox"
-                    name={day}
-                    checked={formData.day.includes(day)}
-                    onChange={handleInputChange}
-                  />
-                  {day}
-                </label>
-              ))}
-            </fieldset>
-          </div>
-          <button type="submit" className="submit-button">Add Activity</button>
-        </form>
-      </aside>
+      <CreateActivityForm onActivitySubmit={handleActivitySubmit}></CreateActivityForm>
 
       <div >
         <CurrentWeekActivities activities={activities} status={true} week={35}></CurrentWeekActivities>
