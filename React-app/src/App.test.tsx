@@ -2,12 +2,13 @@ import { render, screen } from '@testing-library/react'
 //import App from './App'
 import { Header } from 'react-template-npm-coolbeans';
 import ButtonGrupp from './components/ButtonsGroup';
+import CurrentWeekActivities from './components/CurrentWeekActivities';
 //import App from './App';
 
 describe("Given website", () => {
 
 
-
+//-----------------Header----------------------------------------------
     describe("When testing header content", () => {
 
         beforeAll(() => {
@@ -24,7 +25,6 @@ describe("Given website", () => {
             expect(helloWorld).toBeVisible();
 
             const headers = screen.getAllByRole("heading");
-            console.log("headers: ", headers);
             expect(headers).toHaveLength(2);
             expect(headers[0]).toHaveTextContent("Fun Days of the Week Activities");
             expect(headers[1]).toHaveTextContent("Weekly Activities Planner");
@@ -36,7 +36,9 @@ describe("Given website", () => {
         })
     })
 
-    describe("When testing buttonGroup content", () => {
+
+//-----------------ButtonGroup----------------------------------------------
+    describe("When testing ButtonGroup content", () => {
 
         beforeAll(() => {
             render(<ButtonGrupp deleteActivity={function (): void {
@@ -54,7 +56,7 @@ describe("Given website", () => {
                 buttonText={'All activities'} />)
 
         })
-        it("ButtonGroup should have elements and properties", () => {
+        it("ButtonGroup should have 4 buttons", () => {
 
             const buttons = screen.queryAllByRole("button");
             expect(buttons?.length).toBe(4);
@@ -63,6 +65,38 @@ describe("Given website", () => {
             expect(buttons[2]).toHaveTextContent("Update activity");
             expect(buttons[3]).toHaveTextContent("All activities");
         })
+    })
+
+
+//-----------------CurrentWeekActivitiesContent----------------------------------------------
+    describe("When testing CurrentWeekActivitiesContent content", () => {
+
+        beforeAll(() => {
+            render(<CurrentWeekActivities activities={[]} status={true} week={30} />)
+        })
+
+        it("CurrentWeekActivities has elements and properties", () => {
+
+            const headings = screen.queryAllByRole("heading");
+            expect(headings.length).toBe(2);
+            expect(headings[0]).toHaveTextContent("Current week: 30");
+            expect(headings[1]).toHaveTextContent("Current week activities");
+
+            const table = screen.queryAllByRole("table");
+            expect(table.length).toBe(1);
+
+            const tableHeaders = screen.queryAllByRole("columnheader");
+            expect(tableHeaders.length).toBe(8);
+            expect(tableHeaders[0]).toHaveTextContent("Monday");
+            expect(tableHeaders[1]).toHaveTextContent("Tuesday");
+            expect(tableHeaders[2]).toHaveTextContent("Wednesday");
+            expect(tableHeaders[3]).toHaveTextContent("Thursday");
+            expect(tableHeaders[4]).toHaveTextContent("Friday");
+            expect(tableHeaders[5]).toHaveTextContent("Saturday");
+            expect(tableHeaders[6]).toHaveTextContent("Sunday");
+            expect(tableHeaders[7]).toHaveTextContent("");
+        })
+
     })
 
 
