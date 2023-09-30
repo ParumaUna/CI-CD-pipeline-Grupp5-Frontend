@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen} from '@testing-library/react'
 //import App from './App'
 import { Header } from 'react-template-npm-coolbeans';
 import ButtonGrupp from './components/ButtonsGroup';
 
 import CurrentWeekActivities from './components/CurrentWeekActivities';
 import CreateActivityForm from './components/CreateActivityForm';
-//import App from './App';
+import Footer from './components/Footer';
+
 
 describe("Given website", () => {
 
@@ -72,6 +73,7 @@ describe("Given website", () => {
 
 //-----------------CurrentWeekActivitiesContent----------------------------------------------
     describe("When testing CurrentWeekActivitiesContent content", () => {
+        
 
         beforeAll(() => {
             render(<CurrentWeekActivities activities={[]} status={true} week={30} />)
@@ -104,10 +106,12 @@ describe("Given website", () => {
 //-----------------CreateActivityForm----------------------------------------------
     describe("When testing CreateActivityForm content", () => {
 
-        beforeAll(() => {
-            render(<CreateActivityForm onActivitySubmit={function (): void {
-                throw new Error('Function not implemented.')} } />)
-        })
+            beforeAll(() => {
+                render(<CreateActivityForm onActivitySubmit={function (): void {
+                    throw new Error('Function not implemented.');
+                } }/>)
+              });
+
 
         it("CurrentWeekActivities has elements and properties", () => {
 
@@ -137,7 +141,56 @@ describe("Given website", () => {
             const checkboxes = screen.queryAllByRole("checkbox");
             expect(checkboxes.length).toBe(7);
         })
-
     })
 
+//----------------- Footer ----------------------------------------------
+describe("When testing Footer content", () => {
+
+
+
+    beforeAll(() => {
+        render(<Footer div={''}/>)
+    })
+
+    it("CurrentWeekActivities has elements and properties", () => {
+        
+        const footerElement = screen.getByRole("contentinfo");
+        expect(footerElement).toBeVisible();
+
+        const listElements = screen.queryAllByRole("list");
+        expect(listElements.length).toBe(3);
+
+        const headings = screen.queryAllByRole("heading");
+        expect(headings.length).toBe(5);
+
+        expect(headings[0]).toHaveTextContent("USEFULL LINKS");
+        expect(headings[0].tagName).toBe("H5");
+
+        expect(headings[1]).toHaveTextContent("AboutServicesContact");
+        expect(headings[1].tagName).toBe("H6");  
+
+        expect(headings[2]).toHaveTextContent("NEWSLETTER");
+        expect(headings[2].tagName).toBe("H5");
+
+        expect(headings[3]).toHaveTextContent("CONTACT");
+        expect(headings[3].tagName).toBe("H5");
+
+        expect(headings[4]).toHaveTextContent("Isafjordsgatan 30A, 164 40 Kista075624178");
+        expect(headings[4].tagName).toBe("H6");
+
+        const listItemElements = screen.queryAllByRole("listitem");
+        expect(listItemElements.length).toBe(5);
+
+        const buttons = screen.queryAllByRole("button");
+        expect(buttons.length).toBe(1);
+        expect(buttons[0]).toHaveTextContent("Subscribe");
+
+        const inputFields = screen.queryAllByRole("textbox");
+        expect(inputFields.length).toBe(1); 
+
+    })
 })
+
+
+})
+
