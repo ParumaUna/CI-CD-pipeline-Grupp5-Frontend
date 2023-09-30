@@ -38,10 +38,11 @@ const CurrentWeekActivities = (props : ICurrentWeekActivities) => {
   //-----------------------------------------------------------------------
   return (
     <>
-      <p>Current week: {props.week === 0 ? "--" : week}</p>
+      <h3 className="current-week-activities-number">Current week: {props.week === 0 ? "--" : week}</h3>
       {!props.status ? <p className="done-message">You have marked this week as done</p> : null}
       <div>
-        <h2>Current week activities</h2>
+        <h2 className="current-week-activities-header">Current week activities</h2>
+
         <table className='current-week-activities-table'>
           <tr className="header-row-current-activity">
             <th>Monday</th>

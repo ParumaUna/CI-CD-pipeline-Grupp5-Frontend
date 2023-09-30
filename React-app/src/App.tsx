@@ -6,7 +6,7 @@ import Activity from './models/activity';
 import OneActivity from './components/OneActivity';
 import CurrentWeekActivities from './components/CurrentWeekActivities';
 
-import { Button, Header } from 'react-template-npm-coolbeans';
+import { Header } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
 import CreateActivityForm from './components/CreateActivityForm';
 
@@ -19,13 +19,19 @@ function App() {
   //const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
   const [buttonText, setButtonText] = useState<string>("All activities")
   const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
+  const [week, setWeek] = useState<number>(0)
+
+
 
   const baseURL: string = "https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans";
   //const baseURL: string = "http://localhost:3000/api/plans";
 
+
+  //******************************************************** 
+  // useEffect()
+  //********************************************************
   useEffect(() => {
     getActivities();
-
   }, [])
 
   //******************************************************** 
@@ -88,12 +94,22 @@ function App() {
       setAllShowActivitiesStatus(!showAllActivitiesStatus);
       setButtonText("All activities");
     }
-  } 
-  
+  }
+
+  //******************************************************** 
+  // Function showAllActivities
+  //********************************************************
+
+  const markAllActivitiesAsDone = () => {
+    setWeek(0)
+  }
+
   //******************************************************** 
   // Add a new activity through a form with check boxes
   //********************************************************
-  const handleActivitySubmit = async (formData: object) => {
+  const handleActivitySubmit = async (formData: any) => {
+
+    setWeek(formData.week);
     try {
       const response = await fetch(baseURL, {
         method: 'POST',
@@ -106,6 +122,7 @@ function App() {
       if (response.ok) {
         getActivities();
         setAllShowActivitiesStatus(!showAllActivitiesStatus);
+        setButtonText("All activities");
       } else {
         console.error('Failed to create activity');
       }
@@ -133,6 +150,8 @@ function App() {
 
   ))
 
+  const currentWeekActivities = activities.filter(activity => (activity.week == week));
+  
   //-------------------------------------------------------------------
   return (
     <>
@@ -141,10 +160,11 @@ function App() {
       <CreateActivityForm onActivitySubmit={handleActivitySubmit}></CreateActivityForm>
 
       <div >
-        <CurrentWeekActivities activities={activities} status={true} week={35}></CurrentWeekActivities>
+        <CurrentWeekActivities activities={activities} status={true} week={week}></CurrentWeekActivities>
       </div>
 
-      <div className="all-activities-section">
+
+      <div className='button-section-wrapper'>
 
         <button id="btn-get-activities"
           className='btnGetActivities'
@@ -152,13 +172,26 @@ function App() {
           {buttonText}
         </button>
 
-        <div>
+        <button id="btn-hide-current-activities"
+          className='btnGetActivities'
+          onClick={() => markAllActivitiesAsDone()}>
+          Mark as done
+        </button>
+
+      </div>
+
+
+      <div className="all-activities-section">
+
           {showAllActivitiesStatus == true ?
             <>
+            <div className='all-activities-table-header'>
               <h2>All activities</h2>
+            </div>
+             
               <table className='all-activities-table'>
                 <tr className="all-activities-table-header-row">
-                  <th className='activity'>Activity</th>
+                  <th className='all-activities-activity'>Activity</th>
                   <th className='week'>Week</th>
                   <th>Days</th>
                   <th>Comment</th>
@@ -166,12 +199,11 @@ function App() {
                 {existingActivities}
               </table> </>
             : null}
-        </div>
 
       </div>
-      <Button label="Custom Button"></Button>
+
       <Footer div={''}></Footer>
-      
+
     </>
 
   )

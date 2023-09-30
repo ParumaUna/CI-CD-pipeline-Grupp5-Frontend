@@ -25,6 +25,16 @@
   width: 100%;
 }
 
+.current-week-activities-header {
+  width: 100%;
+  text-align: center; 
+  margin-bottom: 20px;
+}
+
+.current-week-activities-number {
+  font-size: 22px;
+}
+
 .done-message{
   color: orange;
   font-size: 20px;

@@ -6,7 +6,14 @@
 }
 
 .all-activities-section {
+  width: 100%;
   margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
 }
 
 .btnGetActivities, .submit-button {
@@ -25,11 +32,23 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
 }
 
-table {
-  width: 70%;
+.button-section-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.all-activities-table {
+  width: 100%;
   border-collapse: collapse;
   background-color: #DBE8D8 ;
   
+}
+
+.all-activities-table-header{
+  width: 100%;
+  text-align: center; 
+  margin-bottom: 20px;
 }
 
 .activities-table {
@@ -45,7 +64,7 @@ table {
   background-color: rgba(193, 217, 193, 0.61);
 }
 
-.activity {
+.all-activities-activity{
   width: 20%;
 }
 
