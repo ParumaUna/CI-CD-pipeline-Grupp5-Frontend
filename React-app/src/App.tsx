@@ -11,6 +11,7 @@ import Separator from './components/Separator';
 import CreateActivityForm from './components/CreateActivityForm';
 
 import Footer from "./components/Footer.tsx"
+import ButtonGrupp from './components/ButtonsGroup.tsx';
 
 function App() {
 
@@ -97,12 +98,26 @@ function App() {
   }
 
   //******************************************************** 
-  // Function showAllActivities
+  // Function markAsDone
   //********************************************************
-
   const markAllActivitiesAsDone = () => {
     setWeek(0)
   }
+
+  //******************************************************** 
+  // Function deleteActivity
+  //********************************************************
+  const deleteActivity = async () => {
+    console.log("Inside function delete activity");
+  }
+
+  //******************************************************** 
+  // Function updateActivity
+  //********************************************************
+  const updateActivity = async () => {
+    console.log("Inside function update activity");
+  }
+
 
   //******************************************************** 
   // Add a new activity through a form with check boxes
@@ -150,8 +165,7 @@ function App() {
 
   ))
 
-  const currentWeekActivities = activities.filter(activity => (activity.week == week));
-  
+
   //-------------------------------------------------------------------
   return (
     <>
@@ -166,39 +180,61 @@ function App() {
 
       <div className='button-section-wrapper'>
 
-        <button id="btn-get-activities"
-          className='btnGetActivities'
-          onClick={() => showAllActivities()}>
-          {buttonText}
-        </button>
-
+        {/* 
         <button id="btn-hide-current-activities"
           className='btnGetActivities'
           onClick={() => markAllActivitiesAsDone()}>
           Mark as done
         </button>
 
+        <button id="btn-hide-current-activities"
+          className='btnGetActivities'
+          onClick={() => deleteActivity()}>
+
+          Delete activity
+        </button>
+
+        <button id="btn-hide-current-activities"
+          className='btnGetActivities'
+          onClick={() => updateActivity()}>
+          Update activity
+        </button>
+
+
+        <button id="btn-get-activities"
+          className='btnGetActivities'
+          onClick={() => showAllActivities()}>
+          {buttonText}
+        </button> */}
+
+        <ButtonGrupp deleteActivity={deleteActivity}
+
+          updateActivity={updateActivity}
+          markAllActivitiesAsDone={markAllActivitiesAsDone}
+          showAllActivities={showAllActivities}
+          buttonText={buttonText}></ButtonGrupp>
+
       </div>
 
 
       <div className="all-activities-section">
 
-          {showAllActivitiesStatus == true ?
-            <>
+        {showAllActivitiesStatus == true ?
+          <>
             <div className='all-activities-table-header'>
               <h2>All activities</h2>
             </div>
-             
-              <table className='all-activities-table'>
-                <tr className="all-activities-table-header-row">
-                  <th className='all-activities-activity'>Activity</th>
-                  <th className='week'>Week</th>
-                  <th>Days</th>
-                  <th>Comment</th>
-                </tr>
-                {existingActivities}
-              </table> </>
-            : null}
+
+            <table className='all-activities-table'>
+              <tr className="all-activities-table-header-row">
+                <th className='all-activities-activity'>Activity</th>
+                <th className='week'>Week</th>
+                <th>Days</th>
+                <th>Comment</th>
+              </tr>
+              {existingActivities}
+            </table> </>
+          : null}
 
       </div>
 
