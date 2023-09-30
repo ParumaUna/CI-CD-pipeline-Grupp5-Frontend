@@ -17,6 +17,7 @@ describe("Given website", () => {
         beforeAll(() => {
             render(<Header h1={'Fun Days of the Week Activities'} h2={'Weekly Activities Planner'} />)
         })
+        
         it("Header should have elements and properties", () => {
 
             //render(<Header h1={'Fun Days of the Week Activities'} h2={'Weekly Activities Planner'}/>)
@@ -46,23 +47,25 @@ describe("Given website", () => {
         beforeAll(() => {
             render(<ButtonGrupp deleteActivity={function (): void {
                 throw new Error('Function not implemented.');
-            }}
-                updateActivity={function (): void {
-                    throw new Error('Function not implemented.');
-                }}
-                markAllActivitiesAsDone={function (): void {
-                    throw new Error('Function not implemented.');
-                }}
-                showAllActivities={function (): void {
-                    throw new Error('Function not implemented.');
-                }}
-                buttonText={'All activities'} />)
+            } }
+            updateActivity={function (): void {
+                throw new Error('Function not implemented.');
+            } }
+            markAllActivitiesAsDone={function (): void {
+                throw new Error('Function not implemented.');
+            } }
+            showAllActivities={function (): void {
+                throw new Error('Function not implemented.');
+            } }
+            buttonText={'All activities'} customButtonOnClick={function (): void {
+                throw new Error('Function not implemented.');
+            } } />)
 
         })
         it("ButtonGroup should have 4 buttons", () => {
 
             const buttons = screen.queryAllByRole("button");
-            expect(buttons?.length).toBe(4);
+            expect(buttons?.length).toBe(5);
             expect(buttons[0]).toHaveTextContent("Mark as done");
             expect(buttons[1]).toHaveTextContent("Delete activity");
             expect(buttons[2]).toHaveTextContent("Update activity");

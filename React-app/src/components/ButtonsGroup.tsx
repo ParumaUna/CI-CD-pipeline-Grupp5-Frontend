@@ -1,13 +1,20 @@
+import { Button} from 'react-template-npm-coolbeans';
+
 interface IButtonGrupp {
     deleteActivity : () => void
     updateActivity : () => void
     markAllActivitiesAsDone : () => void
     showAllActivities : () => void
+    customButtonOnClick : () => void
     buttonText : string
 
 }
 
 const ButtonGrupp = (props: IButtonGrupp) => {
+
+  const customButtonOnClick = () => {
+    props.customButtonOnClick();
+}
 
     const deleteActivity = () => {
         props.deleteActivity()
@@ -52,6 +59,8 @@ const ButtonGrupp = (props: IButtonGrupp) => {
           onClick={() => showAllActivities()}>
           {props.buttonText}
         </button>
+
+        <Button label={'Custom button'} onClick={customButtonOnClick}/>
     </>
     
     )

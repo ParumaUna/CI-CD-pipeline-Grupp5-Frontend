@@ -6,7 +6,7 @@ import Activity from './models/activity';
 import OneActivity from './components/OneActivity';
 import CurrentWeekActivities from './components/CurrentWeekActivities';
 
-import { Header } from 'react-template-npm-coolbeans';
+import { Header} from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
 import CreateActivityForm from './components/CreateActivityForm';
 
@@ -118,6 +118,15 @@ function App() {
     console.log("Inside function update activity");
   }
 
+    //******************************************************** 
+  // Function  customButtonOnClick
+  //********************************************************
+  const customButtonOnClick = async () => {
+    console.log("Inside function customButtonOnClick activity");
+  }
+
+
+
 
   //******************************************************** 
   // Add a new activity through a form with check boxes
@@ -209,10 +218,11 @@ function App() {
 
         <ButtonGrupp deleteActivity={deleteActivity}
 
-          updateActivity={updateActivity}
-          markAllActivitiesAsDone={markAllActivitiesAsDone}
-          showAllActivities={showAllActivities}
-          buttonText={buttonText}></ButtonGrupp>
+        updateActivity={updateActivity}
+        markAllActivitiesAsDone={markAllActivitiesAsDone}
+        showAllActivities={showAllActivities}
+        buttonText={buttonText} 
+        customButtonOnClick={customButtonOnClick}></ButtonGrupp>
 
       </div>
 
