@@ -1,4 +1,4 @@
-import { render, screen} from '@testing-library/react'
+import { render, screen, fireEvent} from '@testing-library/react'
 //import App from './App'
 import { Header } from 'react-template-npm-coolbeans';
 import ButtonGrupp from './components/ButtonsGroup';
@@ -104,44 +104,51 @@ describe("Given website", () => {
     })
 
 //-----------------CreateActivityForm----------------------------------------------
-    describe("When testing CreateActivityForm content", () => {
+describe("When testing CreateActivityForm content", () => {
 
-            beforeAll(() => {
-                render(<CreateActivityForm onActivitySubmit={function (): void {
-                    throw new Error('Function not implemented.');
-                } }/>)
-              });
+    const handleSubmitMock = () => {
+        console.log("handleSubmit is called");
+    };
 
-
-        it("CurrentWeekActivities has elements and properties", () => {
-
-            const formElement = screen.getByRole("form");
-            expect(formElement).toBeVisible();
-
-            const headings = screen.queryAllByRole("heading");
-            expect(headings.length).toBe(1);
-            expect(headings[0]).toHaveTextContent("Create New Activity");
+    beforeAll(() => {
+        render(<CreateActivityForm onActivitySubmit={handleSubmitMock} />)
+    });
 
 
-            const label1 = screen.queryByText("Activity Name:");
-            const label2 = screen.queryByText("Week:");
-            const label3 = screen.queryByText("Comment:");
-            expect(label1).toBeVisible();   
-            expect(label2).toBeVisible(); 
-            expect(label3).toBeVisible(); 
+    it("CurrentWeekActivities has elements and properties", () => {
 
-            const inputFields = screen.queryAllByRole("textbox");       
-            expect(inputFields.length).toBe(2);
 
-            const buttons = screen.queryAllByRole("button");
-            expect(buttons.length).toBe(1);
-            expect(buttons[0]).toHaveTextContent("Add Activity");
-            expect(buttons[0]).toHaveAttribute("type", "submit");
+        const formElement = screen.getByRole("form");
+        expect(formElement).toBeVisible();
 
-            const checkboxes = screen.queryAllByRole("checkbox");
-            expect(checkboxes.length).toBe(7);
-        })
+        const headings = screen.queryAllByRole("heading");
+        expect(headings.length).toBe(1);
+        expect(headings[0]).toHaveTextContent("Create New Activity");
+
+
+        const label1 = screen.queryByText("Activity Name:");
+        const label2 = screen.queryByText("Week:");
+        const label3 = screen.queryByText("Comment:");
+        expect(label1).toBeVisible();
+        expect(label2).toBeVisible();
+        expect(label3).toBeVisible();
+
+        const inputFields = screen.queryAllByRole("textbox");
+        expect(inputFields.length).toBe(2);
+
+        const buttons = screen.queryAllByRole("button");
+        expect(buttons.length).toBe(1);
+        expect(buttons[0]).toHaveTextContent("Add Activity");
+        expect(buttons[0]).toHaveAttribute("type", "submit");
+
+        const checkboxes = screen.queryAllByRole("checkbox");
+        expect(checkboxes.length).toBe(7);
+
+        fireEvent.submit(formElement);
+        expect(handleSubmitMock).toHaveBeenCalledOnce;
     })
+})
+
 
 //----------------- Footer ----------------------------------------------
 describe("When testing Footer content", () => {
@@ -190,7 +197,6 @@ describe("When testing Footer content", () => {
 
     })
 })
-
 
 })
 
