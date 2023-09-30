@@ -5,7 +5,6 @@ import ButtonGrupp from './components/ButtonsGroup';
 
 import CurrentWeekActivities from './components/CurrentWeekActivities';
 import CreateActivityForm from './components/CreateActivityForm';
-import { e } from 'vitest/dist/reporters-cb94c88b.js';
 //import App from './App';
 
 describe("Given website", () => {
@@ -106,7 +105,7 @@ describe("Given website", () => {
     describe("When testing CreateActivityForm content", () => {
 
         beforeAll(() => {
-            render(<CreateActivityForm onActivitySubmit={function (formData: any): void {
+            render(<CreateActivityForm onActivitySubmit={function (): void {
                 throw new Error('Function not implemented.')} } />)
         })
 
