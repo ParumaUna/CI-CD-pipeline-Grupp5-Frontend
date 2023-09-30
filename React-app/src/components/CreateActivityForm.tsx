@@ -58,61 +58,61 @@ const CreateActivityForm: React.FC<ICreateActivityFormProps> = ({ onActivitySubm
   return (
     <aside id="aside-section">
       <h2>Create New Activity</h2>
-      <form onSubmit={handleSubmit} className="activity-form">
-      <div className="form-group">
-            <label>
-              Activity Name:
-              <br/>
-              <input
-                type="text"
-                name="nameOfActivity"
-                value={formData.nameOfActivity}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Week:
-              <br/>
-              <input
-                type="number"
-                name="week"
-                value={formData.week}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              Comment:
-              <br/>
-              <input
-                type="text"
-                name="comment"
-                value={formData.comment}
-                onChange={handleInputChange}
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <fieldset className="days-fieldset">
-              <legend>Select Days:</legend>
-              {daysOfWeek.map((day) => (
-                <label key={day}>
-                  <input
-                    type="checkbox"
-                    name={day}
-                    checked={formData.day.includes(day)}
-                    onChange={handleInputChange}
-                  />
-                  {day}
-                </label>
-              ))}
-            </fieldset>
-          </div>
+      <form role = "form" onSubmit={handleSubmit} className="activity-form">
+        <div className="form-group">
+          <label>
+            Activity Name:
+            <br />
+            <input
+              type="text"
+              name="nameOfActivity"
+              value={formData.nameOfActivity}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Week:
+            <br />
+            <input
+              type="number"
+              name="week"
+              value={formData.week}
+              onChange={handleInputChange}
+              required
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Comment:
+            <br />
+            <input
+              type="text"
+              name="comment"
+              value={formData.comment}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <fieldset className="days-fieldset">
+            <legend>Select Days:</legend>
+            {daysOfWeek.map((day) => (
+              <label key={day}>
+                <input
+                  type="checkbox"
+                  name={day}
+                  checked={formData.day.includes(day)}
+                  onChange={handleInputChange}
+                />
+                {day}
+              </label>
+            ))}
+          </fieldset>
+        </div>
         <button type="submit" className="submit-button">
           Add Activity
         </button>
