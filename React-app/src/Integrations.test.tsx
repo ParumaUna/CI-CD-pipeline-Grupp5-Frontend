@@ -1,0 +1,82 @@
+import { render, screen, fireEvent, waitFor} from '@testing-library/react'
+import App from './App';
+
+
+//-----------------CreateActivityForm----------------------------------------------
+describe("When testing CreateActivityForm content", () => {
+
+
+    beforeAll(() => {
+        render(<App/>)
+    });
+
+    //TODO: Fix this test
+    it.skip("CurrentWeekActivities has elements and properties", async () => {
+
+        const formElement = screen.getByRole("form");
+        expect(formElement).toBeVisible();
+
+        const inputFields = screen.queryAllByRole("textbox");
+        expect(inputFields.length).toBe(3);
+
+        const spinButtons = screen.queryAllByRole("spinbutton");
+        expect(spinButtons.length).toBe(1);
+
+        fireEvent.change(inputFields[0], {target: {value : "Activity 1"}})
+        expect(inputFields[0]).toHaveValue("Activity 1");
+
+        fireEvent.change(inputFields[1], {target: {value : "Comment 1"}})
+        expect(inputFields[1]).toHaveValue("Comment 1");
+
+
+        fireEvent.change(spinButtons[0], {target: {value : 2}})
+        expect(spinButtons[0]).toHaveValue(2);
+
+        const checkboxes = screen.queryAllByRole("checkbox");
+        checkboxes.forEach((checkbox) => { console.log(checkbox.getAttribute("name"))})
+        fireEvent.click(checkboxes[0]);
+        expect(checkboxes[0]).toBeChecked();
+
+        const tableRows = screen.queryAllByRole("cell");
+        expect(tableRows.length).toBe(8);
+
+        const buttons = screen.queryAllByRole("button");
+        fireEvent.click(buttons[0]);
+
+        const elementWithText = await screen.getByText(/Activity 1/); 
+        await waitFor(() => expect(elementWithText).toBeInTheDocument());  
+
+    })
+
+
+})
+
+//----------------- Get all activities table ----------------------------------------------
+describe("When tintegration All activity button",  () => {
+
+    beforeAll(() => {
+        render(<App/>)
+    });
+
+    it("click on All activities button",  () => {
+
+        const buttons = screen.queryAllByRole("button");
+
+        buttons.forEach((button) => { console.log(button.textContent)})
+        
+        let tables = screen.queryAllByRole("table");
+        expect(tables.length).toBe(1);
+
+        fireEvent.click(buttons[4]);
+        expect(buttons[4]).toHaveTextContent("Hide all activities");
+
+        tables =  screen.queryAllByRole("table");
+        expect(tables.length).toBe(2);
+
+        const headerAllActivities = screen.queryByText(/All activities/);
+        expect(headerAllActivities).toBeInTheDocument();
+
+    })
+
+
+})

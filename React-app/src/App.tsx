@@ -6,7 +6,7 @@ import Activity from './models/activity';
 import OneActivity from './components/OneActivity';
 import CurrentWeekActivities from './components/CurrentWeekActivities';
 
-import { Header} from 'react-template-npm-coolbeans';
+import { Header } from 'react-template-npm-coolbeans';
 import Separator from './components/Separator';
 import CreateActivityForm from './components/CreateActivityForm';
 
@@ -98,7 +98,9 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
   // Function markAsDone
   //********************************************************
   const markAllActivitiesAsDone = () => {
-    setWeek(0)
+    console.log("Inside function markAllActivitiesAsDone");
+    setWeek(0);
+    //setShowWeekActivitiesStatus(false);
   }
 
   //******************************************************** 
@@ -115,7 +117,7 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
     console.log("Inside function update activity");
   }
 
-    //******************************************************** 
+  //******************************************************** 
   // Function  customButtonOnClick
   //********************************************************
   const customButtonOnClick = async () => {
@@ -214,11 +216,11 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
         <ButtonGrupp deleteActivity={deleteActivity}
 
-        updateActivity={updateActivity}
-        markAllActivitiesAsDone={markAllActivitiesAsDone}
-        showAllActivities={showAllActivities}
-        buttonText={buttonText} 
-        customButtonOnClick={customButtonOnClick}></ButtonGrupp>
+          updateActivity={updateActivity}
+          markAllActivitiesAsDone={markAllActivitiesAsDone}
+          showAllActivities={showAllActivities}
+          buttonText={buttonText}
+          customButtonOnClick={customButtonOnClick}></ButtonGrupp>
 
       </div>
 
@@ -232,13 +234,15 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
             </div>
 
             <table className='all-activities-table'>
-              <tr className="all-activities-table-header-row">
-                <th className='all-activities-activity'>Activity</th>
-                <th className='week'>Week</th>
-                <th>Days</th>
-                <th>Comment</th>
-              </tr>
-              {existingActivities}
+              <tbody>
+                <tr className="all-activities-table-header-row">
+                  <th className='all-activities-activity'>Activity</th>
+                  <th className='week'>Week</th>
+                  <th>Days</th>
+                  <th>Comment</th>
+                </tr>
+                {existingActivities}
+              </tbody>
             </table> </>
           : null}
 

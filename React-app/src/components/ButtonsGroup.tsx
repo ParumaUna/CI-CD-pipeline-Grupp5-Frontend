@@ -37,14 +37,13 @@ const ButtonGrupp = (props: IButtonGrupp) => {
 <button id="btn-hide-current-activities"
 
           className='btnGetActivities'
-          onClick={() => {markAllActivitiesAsDone}}>
+          onClick={() => {markAllActivitiesAsDone()}}>
           Mark as done
         </button>
 
         <button id="btn-hide-current-activities"
           className='btnGetActivities'
           onClick={() => deleteActivity()}>
-
           Delete activity
         </button>
 
