@@ -22,10 +22,7 @@ function App() {
   const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
   const [week, setWeek] = useState<number>(0)
 
-
-
-  const baseURL: string = "https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans";
-  //const baseURL: string = "http://localhost:3000/api/plans";
+const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
 
   //******************************************************** 
@@ -135,7 +132,7 @@ function App() {
 
     setWeek(formData.week);
     try {
-      const response = await fetch(baseURL, {
+      const response = await fetch(baseURL , {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -179,7 +176,6 @@ function App() {
   return (
     <>
       <Header h1={"Fun Days of the Week Activities"} h2={"Weekly Activities Planner"}></Header>
-
       <CreateActivityForm onActivitySubmit={handleActivitySubmit}></CreateActivityForm>
 
       <div >
