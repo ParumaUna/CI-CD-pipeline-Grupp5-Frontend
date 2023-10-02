@@ -12,19 +12,25 @@ import CreateActivityForm from './components/CreateActivityForm';
 
 import Footer from "./components/Footer.tsx"
 import ButtonGrupp from './components/ButtonsGroup.tsx';
+import ActivityToDelete from './components/ActivityToDelete.tsx';
 
 function App() {
 
-  const [activities, setActivities] = useState<Activity[]>([])
-  const [showAllActivitiesStatus, setAllShowActivitiesStatus] = useState<boolean>(false)
-  //const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
   const [buttonText, setButtonText] = useState<string>("All activities")
-  const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
+  const [deleteButtonText, setDeleteButtonText] = useState<string>("Delete activity")
   const [week, setWeek] = useState<number>(0)
 
-const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
-//https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/
-//const baseURL = https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans
+  const [activities, setActivities] = useState<Activity[]>([])
+  const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
+
+  const [showAllActivitiesStatus, setAllShowActivitiesStatus] = useState<boolean>(false)
+  //const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
+  const [deleteActivitiesStatus, setDeleteActivitiesStatus] = useState<boolean>(false)
+
+  //********************************************************
+  const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
+  //https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/
+  //const baseURL = https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans
 
 
   //******************************************************** 
@@ -59,6 +65,7 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
   const showAllActivities = async () => {
 
     console.log("Inside showAllActivities");
+    setDeleteActivitiesStatus(false);
 
     getActivities();
 
@@ -106,10 +113,34 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
   }
 
   //******************************************************** 
+  // Function showActivitiesToDelete
+  //********************************************************
+  const showActivitiesToDelete = () => {
+    setAllShowActivitiesStatus(false);
+    setDeleteActivitiesStatus(!deleteActivitiesStatus);
+    setDeleteButtonText("Delete activity")
+    setButtonText("All activities");
+  }
+
+  //******************************************************** 
   // Function deleteActivity
   //********************************************************
-  const deleteActivity = async () => {
-    console.log("Inside function delete activity");
+  const deleteActivity = async (id: string) => {
+
+    console.log("Inside deleteActivity function ");
+    console.log(id);
+    const url = `${baseURL}/${id}`
+    console.log("URL to delete activity", url);
+    try {
+       await fetch(url,
+        {
+          method: 'DELETE',
+        })
+    }
+    catch (error) {
+      console.log(error);
+    }
+    getActivities()
   }
 
   //******************************************************** 
@@ -127,8 +158,6 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
   }
 
 
-
-
   //******************************************************** 
   // Add a new activity through a form with check boxes
   //********************************************************
@@ -136,7 +165,7 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
     setWeek(formData.week);
     try {
-      const response = await fetch(baseURL , {
+      const response = await fetch(baseURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -146,7 +175,7 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
       if (response.ok) {
         getActivities();
-        setAllShowActivitiesStatus(!showAllActivitiesStatus);
+        setAllShowActivitiesStatus(false);
         setButtonText("All activities");
       } else {
         console.error('Failed to create activity');
@@ -175,6 +204,20 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
   ))
 
+  //-----------------------------------------------------------------------
+  const activtiesToDelete = activities.filter(activity => (activity.week == week)).map((activity) => (
+    <ActivityToDelete
+      key={activity._id}
+      id={activity._id}
+      nameOfActivity={activity.nameOfActivity}
+      week={activity.week}
+      startTime={activity.startTime}
+      stopTime={activity.stopTime}
+      day={activity.day.toString()}
+      comment={activity.comment}
+      onDeleteActivity={() => deleteActivity(activity._id)}></ActivityToDelete>
+  ))
+
 
   //-------------------------------------------------------------------
   return (
@@ -189,39 +232,14 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
       <div className='button-section-wrapper'>
 
-        {/* 
-        <button id="btn-hide-current-activities"
-          className='btnGetActivities'
-          onClick={() => markAllActivitiesAsDone()}>
-          Mark as done
-        </button>
+        <ButtonGrupp
 
-        <button id="btn-hide-current-activities"
-          className='btnGetActivities'
-          onClick={() => deleteActivity()}>
-
-          Delete activity
-        </button>
-
-        <button id="btn-hide-current-activities"
-          className='btnGetActivities'
-          onClick={() => updateActivity()}>
-          Update activity
-        </button>
-
-
-        <button id="btn-get-activities"
-          className='btnGetActivities'
-          onClick={() => showAllActivities()}>
-          {buttonText}
-        </button> */}
-
-        <ButtonGrupp deleteActivity={deleteActivity}
-
+          showActivitiesToDelete={showActivitiesToDelete}
           updateActivity={updateActivity}
           markAllActivitiesAsDone={markAllActivitiesAsDone}
           showAllActivities={showAllActivities}
           buttonText={buttonText}
+          deleteButtonText={deleteButtonText}
           customButtonOnClick={customButtonOnClick}></ButtonGrupp>
 
       </div>
@@ -229,26 +247,50 @@ const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
 
       <div className="all-activities-section">
 
-        {showAllActivitiesStatus == true ?
-          <>
-            <div className='all-activities-table-header'>
-              <h2>All activities</h2>
-            </div>
+        <div>
+          {showAllActivitiesStatus == true ?
+            <>
+              <div className='all-activities-table-header'>
+                <h2>All activities</h2>
+              </div>
 
-            <table className='all-activities-table'>
-              <tbody>
-                <tr className="all-activities-table-header-row">
-                  <th className='all-activities-activity'>Activity</th>
-                  <th className='week'>Week</th>
-                  <th>Days</th>
-                  <th>Comment</th>
-                </tr>
-                {existingActivities}
-              </tbody>
-            </table> </>
-          : null}
+              <table className='all-activities-table'>
+                <tbody>
+                  <tr className="all-activities-table-header-row">
+                    <th className='all-activities-activity'>Activity</th>
+                    <th className='week'>Week</th>
+                    <th>Days</th>
+                    <th>Comment</th>
+                  </tr>
+                  {existingActivities}
+                </tbody>
+              </table>
+            </>
+            : null}
+        </div>
 
-      </div>
+
+        <div className='delete-activities-section'>
+          {deleteActivitiesStatus == true && activtiesToDelete.length != 0 ?
+            <>
+              <div className='all-activities-table-header'>
+                <h2>Activities to delete</h2>
+              </div>
+              <table className='all-activities-table'>
+                <tbody>
+                  <tr className="all-activities-table-header-row">
+                    <th>Activity</th>
+                    <th className='week'>Week</th>
+                    <th>Days</th>
+                    <th>Comment</th>
+                    <th>Action</th>
+                  </tr>
+                  {activtiesToDelete}
+                </tbody>
+              </table></> : null}
+        </div>
+
+      </div >
 
       <Footer div={''}></Footer>
 

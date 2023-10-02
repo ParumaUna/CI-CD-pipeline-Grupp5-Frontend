@@ -1,0 +1,16 @@
+.btnDelete{
+    background-color: rgb(245, 177, 51);
+    color: black;
+    font-size: 18px;
+    height: 40px;
+    border-radius: 10px;
+    width: 100px;
+    border-width: 0;
+  
+    border-color: rgb(245, 177, 51);
+  }
+
+  .td-actions{
+    text-align: center;
+    vertical-align: middle;
+  }

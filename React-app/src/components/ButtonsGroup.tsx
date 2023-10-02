@@ -1,12 +1,13 @@
 import { Button} from 'react-template-npm-coolbeans';
 
 interface IButtonGrupp {
-    deleteActivity : () => void
     updateActivity : () => void
     markAllActivitiesAsDone : () => void
+    showActivitiesToDelete : () => void
     showAllActivities : () => void
     customButtonOnClick : () => void
     buttonText : string
+        deleteButtonText : string
 
 }
 
@@ -16,9 +17,10 @@ const ButtonGrupp = (props: IButtonGrupp) => {
     props.customButtonOnClick();
 }
 
-    const deleteActivity = () => {
-        props.deleteActivity()
-    }  
+const showActivitiesToDelete = () => {
+  props.showActivitiesToDelete()
+}   
+
     const updateActivity = () => {
         props.updateActivity()
     }   
@@ -43,8 +45,8 @@ const ButtonGrupp = (props: IButtonGrupp) => {
 
         <button id="btn-hide-current-activities"
           className='btnGetActivities'
-          onClick={() => deleteActivity()}>
-          Delete activity
+          onClick={() => showActivitiesToDelete()}>
+          {props.deleteButtonText}
         </button>
 
         <button id="btn-hide-current-activities"

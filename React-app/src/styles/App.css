@@ -13,7 +13,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+}
 
+.delete-activities-section{
+  width: 70%;
 }
 
 .btnGetActivities, .submit-button {

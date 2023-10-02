@@ -19,9 +19,7 @@ describe("Given website", () => {
         })
 
         //--------------------
-        it.skip("Header should have elements and properties", () => {
-
-            //render(<Header h1={'Fun Days of the Week Activities'} h2={'Weekly Activities Planner'}/>)
+        it("Header should have elements and properties", () => {
 
             const message = screen.queryByText("Fun Days of the Week Activities");
             expect(message).toBeVisible();
@@ -49,16 +47,17 @@ describe("Given website", () => {
         beforeAll(() => {
 
             render(<ButtonGrupp 
-                deleteActivity={function (): void {throw new Error('Function not implemented.');} }
+                showActivitiesToDelete={function (): void {throw new Error('Function not implemented.');} }
                 updateActivity={function (): void {throw new Error('Function not implemented.');} }
                 markAllActivitiesAsDone={function (): void {throw new Error('Function not implemented.');} }
                 showAllActivities={function (): void {throw new Error('Function not implemented.');} }
                 buttonText={'All activities'} 
+                deleteButtonText={"Delete activity"}
                 customButtonOnClick={function (): void {throw new Error('Function not implemented.');} } />)
 
         })
         //--------------------
-        it.skip("ButtonGroup should have 4 buttons", () => {
+        it("ButtonGroup should have 4 buttons", () => {
 
             const buttons = screen.queryAllByRole("button");
 
@@ -80,7 +79,7 @@ describe("Given website", () => {
         })
 
         //--------------------
-        it.skip("CurrentWeekActivities has elements and properties", () => {
+        it("CurrentWeekActivities has elements and properties", () => {
 
             const headings = screen.queryAllByRole("heading");
             expect(headings.length).toBe(2);
@@ -118,7 +117,7 @@ describe("Given website", () => {
         });
 
         //--------------------
-        it.skip("CurrentWeekActivities has elements and properties", () => {
+        it("CurrentWeekActivities has elements and properties", () => {
 
             const formElement = screen.getByRole("form");
             expect(formElement).toBeVisible();
@@ -183,7 +182,7 @@ describe("Given website", () => {
         })
 
         //--------------------
-        it.skip("CurrentWeekActivities has elements and properties", () => {
+        it("CurrentWeekActivities has elements and properties", () => {
             
             const footerElement = screen.getByRole("contentinfo");
             expect(footerElement).toBeVisible();
