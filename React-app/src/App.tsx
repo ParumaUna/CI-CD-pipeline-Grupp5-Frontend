@@ -23,6 +23,8 @@ function App() {
   const [week, setWeek] = useState<number>(0)
 
 const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
+//https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/
+//const baseURL = https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans
 
 
   //******************************************************** 

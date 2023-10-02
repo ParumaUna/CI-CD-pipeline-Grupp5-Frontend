@@ -11,7 +11,7 @@ describe("When testing CreateActivityForm content", () => {
     });
 
     //TODO: Fix this test
-    it.skip("CurrentWeekActivities has elements and properties", async () => {
+    it("CurrentWeekActivities has elements and properties", async () => {
 
         const formElement = screen.getByRole("form");
         expect(formElement).toBeVisible();
@@ -22,29 +22,37 @@ describe("When testing CreateActivityForm content", () => {
         const spinButtons = screen.queryAllByRole("spinbutton");
         expect(spinButtons.length).toBe(1);
 
-        fireEvent.change(inputFields[0], {target: {value : "Activity 1"}})
-        expect(inputFields[0]).toHaveValue("Activity 1");
+        fireEvent.change(inputFields[0], {target: {value : "Activity 2"}})
+        expect(inputFields[0]).toHaveValue("Activity 2");
 
         fireEvent.change(inputFields[1], {target: {value : "Comment 1"}})
         expect(inputFields[1]).toHaveValue("Comment 1");
 
 
-        fireEvent.change(spinButtons[0], {target: {value : 2}})
-        expect(spinButtons[0]).toHaveValue(2);
+        fireEvent.change(spinButtons[0], {target: {value : 42}})
+        expect(spinButtons[0]).toHaveValue(42);
 
         const checkboxes = screen.queryAllByRole("checkbox");
         checkboxes.forEach((checkbox) => { console.log(checkbox.getAttribute("name"))})
         fireEvent.click(checkboxes[0]);
         expect(checkboxes[0]).toBeChecked();
 
-        const tableRows = screen.queryAllByRole("cell");
+        let tableRows = screen.queryAllByRole("cell");
         expect(tableRows.length).toBe(8);
 
-        const buttons = screen.queryAllByRole("button");
-        fireEvent.click(buttons[0]);
+        
+        fireEvent.submit(formElement);
 
-        const elementWithText = await screen.getByText(/Activity 1/); 
-        await waitFor(() => expect(elementWithText).toBeInTheDocument());  
+        tableRows = await screen.getAllByRole("cell");
+
+        await waitFor(() => expect(tableRows[0]).toHaveTextContent("Activity 2"));
+        //expect(tableRows[0]).toHaveValue("Activity 1");
+
+        tableRows.forEach((cell) => { console.log(cell.textContent)})
+
+        const elementWithText = await screen.getByText(/Activity 2/); 
+        await waitFor(() => expect(elementWithText).toBeInTheDocument());   
+
 
     })
 
