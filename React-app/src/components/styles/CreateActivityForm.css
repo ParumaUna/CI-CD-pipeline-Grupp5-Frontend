@@ -7,68 +7,68 @@
     position: relative;
     z-index:2;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  #aside-section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+#aside-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-  .activity-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
+.activity-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 16px;
-    margin: 0 auto;
-    padding: 4px;
-  }
-  
-   .form-group input[type="text"],
-  .form-group input[type="number"],
-  .form-group textarea {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  margin: 0 auto;
+  padding: 4px;
+}
 
-  .form-group input[type="number"]{
-    width: 20%;
-  }
-  
-  .days-fieldset {
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-  }
+  .form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
 
-  .days-fieldset label {
-    margin-bottom: 8px;
-  }
-  
-  .submit-button {
-    margin: 0 auto;
-    background-color: rgb(121, 161, 10);
-  }
+.form-group input[type="number"]{
+  width: 20%;
+}
 
-  .submit-button:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .submit-button:hover {
-    background-color: rgb(148, 197, 13);
-  }
-  
-  .submit-button:active {
-    transform: translateY(2px);
-  }
+.days-fieldset {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.days-fieldset label {
+  margin-bottom: 8px;
+}
+
+.submit-button {
+  margin: 0 auto;
+  background-color: rgb(121, 161, 10);
+}
+
+.submit-button:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+  background-color: rgb(148, 197, 13);
+}
+
+.submit-button:active {
+  transform: translateY(2px);
+}
 

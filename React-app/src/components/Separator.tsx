@@ -1,7 +1,7 @@
 import "./styles/Separator.css"
 
 
-//Sepatator component -test comment
+//Sepatator component 
 const Separator = () => {
     return (
         <>

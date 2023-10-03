@@ -58,7 +58,7 @@ const CreateActivityForm: React.FC<ICreateActivityFormProps> = ({ onActivitySubm
   return (
     <aside id="aside-section">
       <h2>Create New Activity</h2>
-      <form role = "form" onSubmit={handleSubmit} className="activity-form">
+      <form role="form" onSubmit={handleSubmit} className="activity-form">
         <div className="form-group">
           <label>
             Activity Name:

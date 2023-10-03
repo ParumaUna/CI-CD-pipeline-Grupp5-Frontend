@@ -1,13 +1,14 @@
-import { Button} from 'react-template-npm-coolbeans';
+import { Button } from 'react-template-npm-coolbeans';
 
 interface IButtonGrupp {
-    updateActivity : () => void
-    markAllActivitiesAsDone : () => void
-    showActivitiesToDelete : () => void
-    showAllActivities : () => void
-    customButtonOnClick : () => void
-    buttonText : string
-        deleteButtonText : string
+  
+  updateActivity: () => void
+  markAllActivitiesAsDone: () => void
+  showActivitiesToDelete: () => void
+  showAllActivities: () => void
+  customButtonOnClick: () => void
+  buttonText: string
+  deleteButtonText: string
 
 }
 
@@ -15,56 +16,58 @@ const ButtonGrupp = (props: IButtonGrupp) => {
 
   const customButtonOnClick = () => {
     props.customButtonOnClick();
-}
+  }
 
-const showActivitiesToDelete = () => {
-  props.showActivitiesToDelete()
-}   
+  const showActivitiesToDelete = () => {
+    props.showActivitiesToDelete()
+  }
 
-    const updateActivity = () => {
-        props.updateActivity()
-    }   
-    
-    const markAllActivitiesAsDone = () => {
-        props.markAllActivitiesAsDone()
-    }
+  const updateActivity = () => {
+    props.updateActivity()
+  }
 
-    const showAllActivities = () => {
-        props.showAllActivities()
-    }
-    //-----------------------------------------------------------------------
-    return(
-        <>
+  const markAllActivitiesAsDone = () => {
+    props.markAllActivitiesAsDone()
+  }
 
-<button id="btn-hide-current-activities"
+  const showAllActivities = () => {
+    props.showAllActivities()
+  }
 
-          className='btnGetActivities'
-          onClick={() => {markAllActivitiesAsDone()}}>
-          Mark as done
-        </button>
 
-        <button id="btn-hide-current-activities"
-          className='btnGetActivities'
-          onClick={() => showActivitiesToDelete()}>
-          {props.deleteButtonText}
-        </button>
+  //-----------------------------------------------------------------------
+  return (
+    <>
 
-        <button id="btn-hide-current-activities"
-          className='btnGetActivities'
-          onClick={() => updateActivity()}>
-          Update activity
-        </button>
+      <button id="btn-hide-current-activities"
 
-        <button id="btn-get-activities"
-          className='btnGetActivities'
-          onClick={() => showAllActivities()}>
-          {props.buttonText}
-        </button>
+        className='btnGetActivities'
+        onClick={() => { markAllActivitiesAsDone() }}>
+        Mark as done
+      </button>
 
-        <Button label={'Custom button'} onClick={customButtonOnClick}/>
+      <button id="btn-hide-current-activities"
+        className='btnGetActivities'
+        onClick={() => showActivitiesToDelete()}>
+        {props.deleteButtonText}
+      </button>
+
+      <button id="btn-hide-current-activities"
+        className='btnGetActivities'
+        onClick={() => updateActivity()}>
+        Update activity
+      </button>
+
+      <button id="btn-get-activities"
+        className='btnGetActivities'
+        onClick={() => showAllActivities()}>
+        {props.buttonText}
+      </button>
+
+      <Button label={'Custom button'} onClick={customButtonOnClick} />
     </>
-    
-    )
+
+  )
 }
 
 export default ButtonGrupp

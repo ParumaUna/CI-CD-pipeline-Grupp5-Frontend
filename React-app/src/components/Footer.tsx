@@ -5,9 +5,9 @@ interface FooterProps {
     div: string;
 }
 
-const Footer = ({div}: FooterProps) => {
+const Footer = ({ div }: FooterProps) => {
     return <footer className='Footer'>
-   
+
         <div className="star">{div}
             <div className='usefull-links'>
                 <ul>
@@ -22,7 +22,7 @@ const Footer = ({div}: FooterProps) => {
             <div className='search-bar'>
                 <ul>
                     <h5>NEWSLETTER</h5>
-                    <input id="input-bar" type="text" placeholder='Enter email'/>
+                    <input id="input-bar" type="text" placeholder='Enter email' />
                     <button className='submit-btn'>Subscribe now</button>
                 </ul>
             </div>
@@ -37,7 +37,7 @@ const Footer = ({div}: FooterProps) => {
             </div>
 
         </div>
-    </footer>;  
+    </footer>;
 }
 
 export default Footer;

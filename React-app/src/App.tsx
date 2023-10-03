@@ -30,9 +30,6 @@ function App() {
 
   //********************************************************
   const baseURL = `${import.meta.env.VITE_BASE_URL}/api/plans`
-  //https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/
-  //const baseURL = https://backend-ci-cd-pipeline-gruppfem-production.up.railway.app/api/plans
-
 
   //******************************************************** 
   // useEffect()
@@ -51,8 +48,6 @@ function App() {
     try {
       const resp = await fetch(baseURL);
       const data = await resp.json();
-      //console.log("Data");
-      //console.log(data.data);
       setActivities(data.data);
     }
     catch (error) {
@@ -129,9 +124,7 @@ function App() {
   const deleteActivity = async (id: string) => {
 
     console.log("Inside deleteActivity function ");
-    console.log(id);
     const url = `${baseURL}/${id}`
-    console.log("URL to delete activity", url);
     try {
       await fetch(url,
         {

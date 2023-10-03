@@ -67,7 +67,7 @@ const CurrentWeekActivities = (props: ICurrentWeekActivities) => {
               {props.status ? <td>{fridayActivities}</td> : <td></td>}
               {props.status ? <td>{saturdayActivities}</td> : <td></td>}
               {props.status ? <td>{sandayActivities}</td> : <td></td>}
-              <td>Test</td>
+              <td></td>
             </tr>
 
           </tbody>
