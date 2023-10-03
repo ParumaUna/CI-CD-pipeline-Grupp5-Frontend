@@ -5,7 +5,7 @@ on:
       branches: ["main"]
 
 jobs: 
-    # Test commit to see if pipeline only goes through pipeline in Github
+   
     build-frontend: 
         
       name: Build frontend
