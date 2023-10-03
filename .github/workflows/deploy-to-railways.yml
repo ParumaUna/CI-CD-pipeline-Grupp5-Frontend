@@ -26,6 +26,8 @@ jobs:
         - name: Run Vitest
           working-directory: React-app
           run: npm test
+          env:
+            VITE_BASE_URL: ${{secrets.VITE_BASE_URL}}
 
         - name: Build frontend
           working-directory: React-app
@@ -38,5 +40,5 @@ jobs:
           run: railway up
           env:
             RAILWAY_TOKEN: ${{secrets.RAILWAY_TOKEN}}
-            VITE_BASE_URL: ${{secrets.VITE_BASE_URL}}
+            
         
