@@ -11,7 +11,7 @@ describe("When testing CreateActivityForm content", () => {
     });
 
     //TODO: Fix this test
-    it.skip("When testin integration Form and CurrentActivityTable", async () => {
+    it("When testin integration Form and CurrentActivityTable", async () => {
 
         const formElement = screen.getByRole("form");
         expect(formElement).toBeVisible();
@@ -66,7 +66,7 @@ describe("When testing integration All activity button",  () => {
         render(<App/>)
     });
 
-    it.skip("click on All activities button",  () => {
+    it("click on All activities button",  () => {
 
         const buttons = screen.queryAllByRole("button");
 

@@ -38,3 +38,5 @@ jobs:
           run: railway up
           env:
             RAILWAY_TOKEN: ${{secrets.RAILWAY_TOKEN}}
+            VITE_BASE_URL: ${{secrets.VITE_BASE_URL}}
+        
