@@ -23,6 +23,7 @@ function App() {
   const [activities, setActivities] = useState<Activity[]>([])
   const [splitedActivities, setSplitedActivities] = useState<Activity[][]>([])
 
+  const [customButtonStatus, setCustomButtonStatus] = useState<boolean>(false)
   const [showAllActivitiesStatus, setAllShowActivitiesStatus] = useState<boolean>(false)
   //const [showWeekActivitiesStatus, setShowWeekActivitiesStatus] = useState<boolean>(true)
   const [deleteActivitiesStatus, setDeleteActivitiesStatus] = useState<boolean>(false)
@@ -132,7 +133,7 @@ function App() {
     const url = `${baseURL}/${id}`
     console.log("URL to delete activity", url);
     try {
-       await fetch(url,
+      await fetch(url,
         {
           method: 'DELETE',
         })
@@ -155,6 +156,7 @@ function App() {
   //********************************************************
   const customButtonOnClick = async () => {
     console.log("Inside function customButtonOnClick activity");
+    setCustomButtonStatus(!customButtonStatus);
   }
 
 
@@ -229,7 +231,6 @@ function App() {
         <CurrentWeekActivities activities={activities} status={true} week={week}></CurrentWeekActivities>
       </div>
 
-
       <div className='button-section-wrapper'>
 
         <ButtonGrupp
@@ -244,6 +245,7 @@ function App() {
 
       </div>
 
+      {customButtonStatus ? <h1>Jag är en custom Button</h1> : null}
 
       <div className="all-activities-section">
 
